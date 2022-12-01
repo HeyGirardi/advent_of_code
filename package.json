@@ -1,0 +1,12 @@
+{
+  "name": "advent_of_code",
+  "version": "1.0.0",
+  "description": "Advent of Code",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HeyGirardi/advent_of_code.git"
+  },
+  "scripts": {
+    "day1": "node ./01/index.js"
+  }
+}
