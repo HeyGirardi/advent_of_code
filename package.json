@@ -7,6 +7,7 @@
     "url": "git+https://github.com/HeyGirardi/advent_of_code.git"
   },
   "scripts": {
-    "day1": "node ./01/index.js"
+    "day1": "node ./01/index.js",
+    "day2": "node ./02/index.js"
   }
 }
