@@ -8,6 +8,7 @@
   },
   "scripts": {
     "day1": "node ./01/index.js",
-    "day2": "node ./02/index.js"
+    "day2": "node ./02/index.js",
+    "day3": "node ./03/index.js"
   }
 }
