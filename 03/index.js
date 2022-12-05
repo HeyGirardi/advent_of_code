@@ -2,18 +2,19 @@ const utils = require('../utils');
 
 async function main() {
   try {
+    const separator = '\n';
     console.log({
       day: 3,
       puzzles: [
         {
           id: 1,
-          sample: await puzzle1(__dirname, 'sample'),
-          answer: await puzzle1(__dirname, 'input'),
+          sample: await puzzle1(__dirname, 'sample', separator),
+          answer: await puzzle1(__dirname, 'input', separator),
         },
         {
           id: 2,
-          sample: await puzzle2(__dirname, 'sample'),
-          answer: await puzzle2(__dirname, 'input'),
+          sample: await puzzle2(__dirname, 'sample', separator),
+          answer: await puzzle2(__dirname, 'input', separator),
         },
       ],
     });
@@ -22,8 +23,8 @@ async function main() {
   }
 }
 
-async function puzzle1(dir, file) {
-  const rucksacks = (await utils.readFile(dir, file)).map(pocket => {
+async function puzzle1(dir, file, separator) {
+  const rucksacks = (await utils.readFile(dir, file, separator)).map(pocket => {
     const half = Math.floor(pocket.length / 2);
     const items = {
       left: pocket.substr(0, half),
@@ -46,8 +47,8 @@ async function puzzle1(dir, file) {
   return rucksacks.reduce((sum, item) => sum + scores[item], 0);
 }
 
-async function puzzle2(dir, file) {
-  const groups = await utils.readFile(dir, file);
+async function puzzle2(dir, file, separator) {
+  const groups = await utils.readFile(dir, file, separator);
   const rucksacks = [];
   for (let i = 0; i < groups.length; i += 3) {
     rucksacks.push(groups.slice(i, i + 3));

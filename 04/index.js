@@ -2,18 +2,19 @@ const utils = require('../utils');
 
 async function main() {
   try {
+    const separator = '\n';
     console.log({
       day: 4,
       puzzles: [
         {
           id: 1,
-          sample: await puzzle1(__dirname, 'sample'),
-          answer: await puzzle1(__dirname, 'input'),
+          sample: await puzzle1(__dirname, 'sample', separator),
+          answer: await puzzle1(__dirname, 'input', separator),
         },
         {
           id: 2,
-          sample: await puzzle2(__dirname, 'sample'),
-          answer: await puzzle2(__dirname, 'input'),
+          sample: await puzzle2(__dirname, 'sample', separator),
+          answer: await puzzle2(__dirname, 'input', separator),
         },
       ],
     });
@@ -22,8 +23,8 @@ async function main() {
   }
 }
 
-async function data(dir, file) {
-  return (await utils.readFile(dir, file)).map((row) => {
+async function data(dir, file, separator) {
+  return (await utils.readFile(dir, file, separator)).map((row) => {
     const pair = row.split(',').map((pair) => {
       const range = pair.split('-').map((x) => +x);
       return {
@@ -39,8 +40,8 @@ async function data(dir, file) {
   });
 }
 
-async function puzzle1(dir, file) {
-  return (await data(dir, file)).reduce((count, pair) => {
+async function puzzle1(dir, file, separator) {
+  return (await data(dir, file, separator)).reduce((count, pair) => {
     const one = pair.one;
     const two = pair.two;
     if (one.low <= two.low && one.high >= two.high) {
@@ -52,7 +53,7 @@ async function puzzle1(dir, file) {
   }, 0);
 }
 
-async function puzzle2(dir, file) {
+async function puzzle2(dir, file, separator) {
   const hasOverlap = (left, right) => {
     return (
       (left.low >= right.low && left.low <= right.high) ||
@@ -60,7 +61,7 @@ async function puzzle2(dir, file) {
       (left.low <= right.low && left.high >= right.high)
     );
   };
-  return (await data(dir, file)).reduce((overlaps, pair) => {
+  return (await data(dir, file, separator)).reduce((overlaps, pair) => {
     const one = pair.one;
     const two = pair.two;
     if (hasOverlap(one, two) || hasOverlap(two, one)) {

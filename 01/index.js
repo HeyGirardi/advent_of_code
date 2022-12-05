@@ -2,18 +2,19 @@ const utils = require('../utils');
 
 async function main() {
   try {
+    const separator = '\n';
     console.log({
       day: 1,
       puzzles: [
         {
           id: 1,
-          sample: await puzzle1(__dirname, 'sample'),
-          answer: await puzzle1(__dirname, 'input'),
+          sample: await puzzle1(__dirname, 'sample', separator),
+          answer: await puzzle1(__dirname, 'input', separator),
         },
         {
           id: 2,
-          sample: await puzzle2(__dirname, 'sample'),
-          answer: await puzzle2(__dirname, 'input'),
+          sample: await puzzle2(__dirname, 'sample', separator),
+          answer: await puzzle2(__dirname, 'input', separator),
         },
       ],
     });
@@ -22,8 +23,8 @@ async function main() {
   }
 }
 
-async function puzzle1(dir, file) {
-  const data = await utils.readFile(dir, file);
+async function puzzle1(dir, file, separator) {
+  const data = await utils.readFile(dir, file, separator);
   let highest = 0;
   let inventory = [];
   for (let i = 0; i < data.length; i++) {
@@ -38,8 +39,8 @@ async function puzzle1(dir, file) {
   return highest;
 }
 
-async function puzzle2(dir, file) {
-  const data = await utils.readFile(dir, file);
+async function puzzle2(dir, file, separator) {
+  const data = await utils.readFile(dir, file, separator);
   const elves = [];
   let inventory = [];
   for (let i = 0; i < data.length; i++) {
