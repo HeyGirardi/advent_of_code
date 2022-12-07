@@ -12,6 +12,7 @@
     "day3": "node ./03/index.js",
     "day4": "node ./04/index.js",
     "day5": "node ./05/index.js",
-    "day6": "node ./06/index.js"
+    "day6": "node ./06/index.js",
+    "day7": "node ./07/index.js"
   }
 }
